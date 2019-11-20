@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import logo from '../../assets/logo.png';
 
 export const Container = styled.View`
-  flex: 1;
-  height: 100%;
+  height: 10%;
   background: #141419;
   display: flex;
   flex-direction: row;

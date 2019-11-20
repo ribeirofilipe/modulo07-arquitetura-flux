@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 const Container = styled.View`
+  flex: 1;
   max-width: 700px;
-  background: #333;
+  background: #191920;
   border-radius: 4px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 30px;

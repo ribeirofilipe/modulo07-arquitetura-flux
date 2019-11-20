@@ -3,19 +3,21 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
 import Header from './Components/Header';
-import Main from './pages/Main/index';
+import Home from './pages/Home/index';
+import Cart from './pages/Cart/index';
 
 const Routes = createAppContainer(
   createStackNavigator(
     {
-      Main,
+      Home,
+      Cart
     },
     {
       headerLayoutPreset: 'center',
       headerBackTitleVisible: false,
-      defaultNavigationOptions: {
-        header: <Header />,
-      },
+      defaultNavigationOptions: navigation => ({
+        header: <Header {...navigation} />
+      }),
     },
   ),
 );

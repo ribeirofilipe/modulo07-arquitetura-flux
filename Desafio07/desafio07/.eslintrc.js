@@ -35,6 +35,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/state-in-constructor': 0,
     'react/static-property-placement': 0,
-    'react/sort-comp': 0
-  },
+    'react/sort-comp': 0,
+    'no-console':{ 'error': 'tron' }
+  }
 };
