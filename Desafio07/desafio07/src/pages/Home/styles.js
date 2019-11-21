@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   flex: 1;
@@ -13,7 +12,8 @@ export const Shoe = styled.View`
   height: 45%;
   padding: 10px;
   border-radius: 5px;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 export const Image = styled.Image`
@@ -21,7 +21,10 @@ export const Image = styled.Image`
    width: 200px;
 `;
 
-export const Price = styled.Text``;
+export const Price = styled.Text`
+  font-weight: bold;
+  font-size: 25px;
+`;
 
 export const Title = styled.Text`
   flex: 1;
