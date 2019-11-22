@@ -1,4 +1,5 @@
 import produce from 'immer';
+import { ToastAndroid } from 'react-native';
 
 export default function cart(state = [], action) {
   switch (action.type) {
@@ -14,6 +15,7 @@ export default function cart(state = [], action) {
 
         if (productIndex >= 0) {
           draft.splice(productIndex, 1);
+          ToastAndroid.show('Item removido do carrinho.', ToastAndroid.SHORT);
         }
       });
     case '@cart/UPDATE_AMOUNT_SUCCESS': {

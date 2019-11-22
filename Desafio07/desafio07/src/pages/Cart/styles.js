@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.View`
   flex: 1;
@@ -6,10 +7,10 @@ export const Container = styled.View`
 `;
 
 export const Table = styled.View`
-  background: #fff;
   flex: 1;
+  width: 78%;
   margin: 20px auto;
-  border-radius: 5px;
+  border-radius: 4px;
 `;
 
 export const ProductTable = styled.View`
@@ -20,6 +21,8 @@ export const Product = styled.View`
   align-items: center;
   flex-direction: row;
   justify-content: center;
+  margin-top: 10px;
+
 `;
 
 export const Image = styled.Image`
@@ -42,8 +45,7 @@ export const EmptyCart = styled.View`
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-
-  padding: 30px;
+  width: 78%;
 `;
 
 export const EmptyText = styled.Text`
@@ -60,8 +62,8 @@ export const RemoveProduct = styled.TouchableOpacity`
 
 export const UpdateAmount = styled.View`
   background: #eee;
-  margin: 0 15px 0 15px;
-  height: 22%;
+  height: 20%;
+  margin: 0 10px 0 10px;
   border-radius: 4px;
 
   flex-direction: row;
@@ -83,25 +85,46 @@ export const Buttons = styled.View`
 export const AddButton = styled.TouchableOpacity`
 `;
 
-export const RemoveButton = styled.Text`
+export const RemoveButton = styled.TouchableOpacity`
 `;
 
-export const Input = styled.View`
+export const List = styled.FlatList``;
+
+export const Input = styled.Text`
+  padding: 0 5px 0 5px;
+  background: #fff;
+  width: 13%;
+  border-radius: 3px;
+  margin: 0 5px 0 5px;
 `;
 
-export const CartProduct = styled.View``;
-
-
-export const Footer = styled.View`
-  flex: 1;
-`;
-
-export const FinishButton = styled.TouchableOpacity`
+export const CartProduct = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
 
-  max-height: 20%;
+  margin-bottom: 15px;
+  background: #fff;
+  border-radius: 4px;
+
+  padding-bottom: 15px;
+`;
+
+
+export const Footer = styled.View`
+  justify-content: center;
+
+  background: #fff;
+  margin-top: 20px;
+  border-radius: 4px;
+  max-height: 30%;
+`;
+
+export const FinishButton = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+
+  height: 30%;
   background: #7159c1;
   margin: 10px;
   border-radius: 6px;
@@ -114,13 +137,22 @@ export const FinishButtonText = styled.Text`
 `;
 
 export const Total = styled.View`
-  flex: 1;
   align-items: center;
   justify-content: center;
-  padding-top: 10px;
 `;
 
-export const TotalText = styled.Text`
+export const TotalValue = styled.Text`
   font-size: 45px;
   font-weight: bold;
 `;
+
+export const TotalText = styled.Text`
+  color: ${darken(0.3, '#eeee')};
+`;
+
+export const Price = styled.Text`
+  font-weight: bold;
+  font-size: 16px;
+`;
+
+export const Title = styled.Text``;

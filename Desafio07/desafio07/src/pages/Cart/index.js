@@ -1,21 +1,23 @@
 import React from 'react';
 import * as CartActions from '../../store/modules/cart/actions';
 import { connect } from 'react-redux';
-import { Text } from 'react-native';
 import { bindActionCreators } from 'redux';
 import {
   Container,
-  ProductTable,
   Footer,
   FinishButton,
   Total,
   TotalText,
+  TotalValue,
   Table,
   FinishButtonText,
   Product,
+  Title,
   Image,
   ProductInfo,
   RemoveProduct,
+  List,
+  Price,
   EmptyCart,
   EmptyText,
   UpdateAmount,
@@ -28,7 +30,8 @@ import {
 import { formatPrice } from '../../util/format';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-function Cart({ cart, total, removeFromCart, updateAmountRequest  }) {
+function Cart({ cart, total, removeFromCart, updateAmountRequest, navigation  }) {
+
    function increment(product) {
      updateAmountRequest(product.id, product.amount + 1);
    }
@@ -37,23 +40,30 @@ function Cart({ cart, total, removeFromCart, updateAmountRequest  }) {
      updateAmountRequest(product.id, product.amount - 1);
    }
 
-   console.tron.log(cart.length);
+   function remove(id) {
+    removeFromCart(id);
+
+    navigation.navigate('Home');
+   }
 
   return (
     <Container>
-      {cart.length > 0 ?
-        <Table>
-
-          <ProductTable>
-            {cart.map(product => (
+      {cart.length ?
+      <Table>
+        <List
+          vertical
+          data={cart}
+          extraData={this.props}
+          keyExtractor={product => String(product.id)}
+          renderItem={({item}) => (
               <CartProduct>
                 <Product>
-                  <Image source={{ uri: product.image }} ></Image>
+                  <Image source={{ uri: item.image }} ></Image>
                     <ProductInfo>
-                      <Text>{product.title}</Text>
-                      <Text>{product.priceFormatted}</Text>
+                      <Title>{item.title}</Title>
+                      <Price>{item.priceFormatted}</Price>
                     </ProductInfo>
-                  <RemoveProduct onPress={() => removeFromCart(product.id)} >
+                  <RemoveProduct onPress={() => remove(item.id)}>
                     <Icon name="delete-forever" size={24} color='#7159c1'/>
                   </RemoveProduct>
                 </Product>
@@ -65,37 +75,35 @@ function Cart({ cart, total, removeFromCart, updateAmountRequest  }) {
                         name="remove-circle-outline"
                         size={20}
                         color="#7159c1"
+                        onPress={() => decrement(item)}
                       />
                     </RemoveButton>
-                    <Input readOnly ></Input>
+                    <Input readOnly >{item.amount}</Input>
                     <AddButton>
                       <Icon
                         name="add-circle-outline"
                         size={20}
                         color="#7159c1"
+                        onPress={() => increment(item)}
                       />
                     </AddButton>
                   </Buttons>
-                  <TotalPrice>{total}</TotalPrice>
+                  <TotalPrice>{item.subtotal}</TotalPrice>
                 </UpdateAmount>
               </CartProduct>
-            ))}
-          </ProductTable>
-
+          )}
+        />
           <Footer>
-
             <Total>
-              <Text>TOTAL</Text>
-              <TotalText>{total}</TotalText>
+              <TotalText>TOTAL</TotalText>
+              <TotalValue>{total}</TotalValue>
             </Total>
-
             <FinishButton>
               <FinishButtonText>FINALIZAR PEDIDO</FinishButtonText>
             </FinishButton>
-
           </Footer>
-
         </Table> :
+
         <EmptyCart>
           <Icon name="remove-shopping-cart" size={64} color="#eee" />
           <EmptyText>Seu carrinho está vazio.</EmptyText>
