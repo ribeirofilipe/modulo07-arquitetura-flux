@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 
-export const List = styled.FlatList.attrs({
-  showsVerticalScrollIndicator: false,
-})`
+export const ProductList = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
